@@ -1,0 +1,238 @@
+/* Print-specific styles for invoices */
+
+@media print {
+  /* Reset body margins for print */
+  body {
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 12pt !important;
+    line-height: 1.4 !important;
+    color: #000000 !important;
+    background: white !important;
+  }
+
+  /* Invoice container optimization */
+  .invoice-container {
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 15mm !important;
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    background: white !important;
+  }
+
+  /* Hide non-essential elements */
+  .no-print,
+  .sidebar,
+  .navigation,
+  button,
+  .button,
+  [class*="shadow"],
+  .toast,
+  .tooltip {
+    display: none !important;
+  }
+
+  /* Optimize headers */
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+    break-after: avoid;
+    color: #000000 !important;
+  }
+
+  /* Table optimizations */
+  table {
+    border-collapse: collapse !important;
+    width: 100% !important;
+    margin-bottom: 10mm !important;
+  }
+
+  th, td {
+    border: 1pt solid #cccccc !important;
+    padding: 3mm !important;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  th {
+    background-color: #f8f9fa !important;
+    font-weight: bold !important;
+    color: #000000 !important;
+  }
+
+  /* Ensure proper page breaks */
+  .page-break-before {
+    page-break-before: always;
+    break-before: page;
+  }
+
+  .page-break-after {
+    page-break-after: always;
+    break-after: page;
+  }
+
+  .page-break-avoid {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  /* Logo optimization for print */
+  .company-logo {
+    max-width: 40mm !important;
+    max-height: 20mm !important;
+    object-fit: contain !important;
+  }
+
+  /* Text color corrections for print */
+  .text-gray-600,
+  .text-gray-700,
+  .text-gray-800 {
+    color: #333333 !important;
+  }
+
+  .text-gray-500 {
+    color: #666666 !important;
+  }
+
+  /* Badge and status styling for print */
+  .badge,
+  .status-badge {
+    border: 1pt solid #cccccc !important;
+    background-color: transparent !important;
+    color: #000000 !important;
+    padding: 1mm 2mm !important;
+    font-size: 10pt !important;
+  }
+
+  /* Ensure adequate spacing */
+  .invoice-header {
+    margin-bottom: 8mm !important;
+  }
+
+  .invoice-details {
+    margin-bottom: 6mm !important;
+  }
+
+  .invoice-items {
+    margin-bottom: 6mm !important;
+  }
+
+  .invoice-totals {
+    margin-bottom: 6mm !important;
+  }
+
+  .invoice-footer {
+    margin-top: 8mm !important;
+    border-top: 1pt solid #cccccc !important;
+    padding-top: 4mm !important;
+  }
+
+  /* Typography improvements */
+  .font-bold {
+    font-weight: bold !important;
+  }
+
+  .font-semibold {
+    font-weight: 600 !important;
+  }
+
+  /* Remove shadows and modern effects */
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+    background-image: none !important;
+  }
+
+  /* Flexbox fallbacks for older print engines */
+  .flex {
+    display: block !important;
+  }
+
+  .grid {
+    display: block !important;
+  }
+
+  .grid > * {
+    margin-bottom: 2mm !important;
+  }
+
+  /* QR codes and barcodes (if any) */
+  .qr-code,
+  .barcode {
+    width: 20mm !important;
+    height: 20mm !important;
+  }
+
+  /* Links styling for print */
+  a {
+    color: #000000 !important;
+    text-decoration: none !important;
+  }
+
+  a:after {
+    content: " (" attr(href) ")" !important;
+    font-size: 9pt !important;
+    color: #666666 !important;
+  }
+
+  /* Page numbering */
+  @page {
+    margin: 15mm;
+    size: A4;
+    
+    @bottom-right {
+      content: "Page " counter(page) " of " counter(pages);
+      font-size: 9pt;
+      color: #666666;
+    }
+  }
+
+  /* First page specific styling */
+  @page :first {
+    margin-top: 20mm;
+  }
+
+  /* Avoid orphans and widows */
+  p, li {
+    orphans: 3;
+    widows: 3;
+  }
+}
+
+/* Screen-specific styles for PDF generation preview */
+@media screen {
+  .pdf-preview-mode {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.4;
+    color: #000000;
+    background: white;
+    max-width: 794px; /* A4 width at 96 DPI */
+    margin: 0 auto;
+    padding: 40px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .pdf-preview-mode .company-logo {
+    max-width: 150px;
+    max-height: 75px;
+    object-fit: contain;
+  }
+
+  .pdf-preview-mode table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  .pdf-preview-mode th,
+  .pdf-preview-mode td {
+    border: 1px solid #cccccc;
+    padding: 8px;
+  }
+
+  .pdf-preview-mode th {
+    background-color: #f8f9fa;
+    font-weight: bold;
+  }
+}
