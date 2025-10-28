@@ -20,7 +20,7 @@ To run ZapInvoice locally:
 
 ```bash
 # Clone the repository
-git clone https://github.com/<your-username>/zapinvoice.git
+git clone https://github.com/aliyuhbaba001/ZapInvoice.git
 cd zapinvoice
 
 # Install dependencies
